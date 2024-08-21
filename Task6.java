@@ -10,33 +10,33 @@ public class Task6 {
         ArrayList<Integer> num = new ArrayList<>();
         boolean rez = true;
         int count = 0;
-
+        
         while (a <= 99999999) {
             n = a;
 
-            while (n > 0) {
-                num.add(n % 10);
-                n /= 10;
-            }
-
-            for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
-                    if (i != j) {
-                        if (!Objects.equals(num.get(i), num.get(j))) {
-                            rez = true;
-                        } else {
-                            rez = false;
-                            break;
+            if (a % 12345 == 0) {
+                while (n > 0) {
+                    num.add(n % 10);
+                    n /= 10;
+                }
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (i != j) {
+                            if (!Objects.equals(num.get(i), num.get(j))) {
+                                rez = true;
+                            } else {
+                                rez = false;
+                                break;
+                            }
                         }
                     }
-                } if (!rez) break;
-            }
-
-            num = new ArrayList<>(0);
-
-            if (rez && a % 12345 == 0) {
-                System.out.println(a);
-                count++;
+                    if (!rez) break;
+                }
+                num = new ArrayList<>(0);
+                if (rez) {
+                    System.out.println(a);
+                    count++;
+                }
             }
             a++;
         }
